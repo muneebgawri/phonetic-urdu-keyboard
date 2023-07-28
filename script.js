@@ -26,10 +26,32 @@ function copyToClipboard() {
     alert('Urdu text copied to clipboard!');
 }
 
-// Function to create and append virtual keyboard buttons
+// Function to create and append virtual keyboard buttons in QWERTY layout
 function createKeyboardButtons() {
     const keyboardContainer = document.querySelector('.virtual-keyboard');
-    for (const char of Object.keys(phoneticUrduCharacters)) {
+    const row1 = 'qwertyuiop';
+    const row2 = 'asdfghjkl';
+    const row3 = 'zxcvbnm';
+
+    for (const char of row1) {
+        const button = document.createElement('button');
+        button.innerText = char.toUpperCase();
+        button.addEventListener('click', () => addToTextarea(char));
+        keyboardContainer.appendChild(button);
+    }
+
+    keyboardContainer.appendChild(document.createElement('br'));
+
+    for (const char of row2) {
+        const button = document.createElement('button');
+        button.innerText = char.toUpperCase();
+        button.addEventListener('click', () => addToTextarea(char));
+        keyboardContainer.appendChild(button);
+    }
+
+    keyboardContainer.appendChild(document.createElement('br'));
+
+    for (const char of row3) {
         const button = document.createElement('button');
         button.innerText = char.toUpperCase();
         button.addEventListener('click', () => addToTextarea(char));
@@ -38,4 +60,4 @@ function createKeyboardButtons() {
 }
 
 // Create keyboard buttons on page load
-createKeyboardButtons();p
+createKeyboardButtons();
